@@ -65,6 +65,7 @@ body {
     gap: 4px;
     padding: 8px 16px 8px 16px;
     outline: none;
+    cursor: pointer;
 }
 
 .btn-primary {
@@ -88,12 +89,13 @@ body {
 }
 
 .banner-item {
-    background-image: url(./images/banners/banner.png);
+    background-image: url(./images/banners/banner-img.png);
     background-repeat: no-repeat;
-    background-size: cover; /* картинка будет растягиваться  при увеличении количества текста*/
+    background-size: contain; /* cover- картинка будет растягиваться  при увеличении количества текста*/
     background-position: center right;
     padding: 68px;
     border-radius: 10px;
+    background-color:rgba(255, 241, 184, 1);
 }
 
 .banner-item--title {
@@ -113,14 +115,12 @@ body {
     margin: 0;
 }
 
-.products {
-
-}
-
 .products-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /* чтобы был перенос текста при уменьшении ширины экрана*/
+    gap: 24px;
 
 }
 
@@ -128,6 +128,7 @@ body {
     color: rgba(0, 0, 0, 1);
     font-size: 36px;
     font-weight: 700;
+    margin: 0;
 }
 
 .products-header--search {
@@ -152,6 +153,259 @@ body {
     font-weight: 400;
     line-height: 24px;
 }
+
+.products-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: 24px;
+    row-gap: 30px;
+    margin-top: 44px;
+    margin-bottom: 90px;
+}
+
+.products-card {
+    width: calc((100% - 48px) /3); /* ширина высчитывается - каждая карточка по ширине 100% контейнера минус отступ 24px, минус еще один отступ 24px, то есть минус48px и разделить на 3, тк у нас три карточки*/ 
+    border-radius: 7px;
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 1);
+    overflow: hidden; /* чтобы картинка обрезалась по закруглению, даже если не там где надо*/
+    text-decoration: none;
+}
+
+/* ширина перестраивается, но картинки при этом не сжимаются, для этого добавляем ширину 100% самой картинке - и div, где она лежит, и самой img */
+.products-card_image {
+    width: 100%; 
+}
+
+.products-card_image img {
+    width: 100%; /* обязательно надо добавить ширину 100% не только аттрибуту products-card_image, но еще и самому тэгу img */
+} /* теперь картинки сжимаются при уменьшении ширину экрана*/
+
+.products-card_description {
+    padding: 20px 24px 34px 24px; /* верх право низ лево*/
+}
+
+.products-card_description--row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.products-card_description--title{
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    margin: 0; /* убираем лишние отступы */
+}
+
+.products-card_description--badge {
+    color:rgba(255, 255, 255, 1);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    border-radius: 2px;
+    background:rgba(38, 38, 38, 1);
+    padding: 1px 8px;
+}
+
+.products-card_description--info {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    flex-wrap: wrap; /* перенос строки */
+    row-gap: 8px;
+    column-gap: 25px;
+}
+
+.products-card_description--row:not(:last-child ){
+    margin-bottom: 10px;
+}
+
+.products-card_description--rating {
+    color: rgba(255, 193, 7, 1);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 32px;
+}
+
+.products-card_description--price {
+    color:rgba(140, 140, 140, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.products-card_description--group {
+    color:rgba(140, 140, 140, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 32px;
+    position: relative;
+}
+
+.products-card_description--group::before{
+    content: ''; /* точку задаем через псевдокласс*/
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: rgba(140, 140, 140, 1);
+    position: absolute;
+    top: 14px;
+    left: -14px;
+}
+
+.products-card_description--name {
+    color: rgba(0, 0, 0, 1);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    margin: 0;
+}
+
+.products-card_description--text {
+    color:rgba(140, 140, 140, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    margin: 0;
+}
+.products-card_description-controls {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 30px;
+}
+
+.products-card_description-controls--price {
+    color: rgba(0, 0, 0, 1);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 32px;
+}
+
+.cart-modal__overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-modal__overlay.open {
+    display: flex; /* появится на странице если у него будет класс open */
+}
+
+.cart-modal {
+    width: 100%; /*  ширина блока 100%, она дойдет до 780px и остановится, больше она быть не может, а меньше может*/
+    max-width: 780px;
+    padding: 40px 45px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 1);
+}
+
+.cart-modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+}
+
+.cart-modal__header--title {
+    color: rgba(0, 0, 0, 1);
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 42px;
+    margin: 0;
+}
+
+.cart-modal__header--close {
+    cursor: pointer;
+}
+
+.cart-modal__footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 50px;
+}
+
+.cart-modal__footer--price {
+    color: rgba(250, 250, 250, 1);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
+    border-radius: 5px;
+    background: rgba(38, 38, 38, 1);
+    padding: 15px 20px;
+}
+
+.cart-modal__footer--controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.cart-item:not(:last-child) {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(217, 217, 217, 1);
+}
+
+.cart-item--title {
+    color: rgba(0, 0, 0, 1);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 32px;
+    margin: 0;
+}
+
+.cart-item__controls {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item__controls--price {
+    color: rgba(0, 0, 0, 1);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 32px;
+    margin-right: 47px;
+}
+
+.cart-item__controls--count {
+    margin-right: 15px;
+    margin-left: 15px;
+
+}
+
+.cart-item__controls button {
+    box-sizing: border-box;
+    border: 1px solid rgba(64, 169, 255, 1);
+    border-radius: 2px;
+    background:rgba(255, 255, 255, 1);
+    color: rgba(64, 169, 255, 1);
+}
+
 
 .footer{
     min-height: 156px;
@@ -199,10 +453,25 @@ body {
 
 /* медиа-запросы внизу */
 @media (max-width: 991px){ /* при изменении ширины экрана до 991px меняем ширину текста - растягиваем по всему баннеру*/
+    .banner-item {
+        background-image: none;
+    }
+
     .banner-item--title {
          max-width: 100%;
     }
+
     .banner-item--subtitle {
          max-width: 100%;
+    }
+
+    .products-card { /* при уменьшении ширины экрана до 991px меняем количество карточек с 3х до 2х*/
+    width: calc((100% - 24px) /2) /* ширина высчитывается - каждая карточка по ширине 100% контейнера минус отступ 24px и разделить на 2, тк у нас теперь отображаются две карточки*/ 
+    }
+}
+
+@media (max-width: 768px){ /* при уменьшении ширины экрана до 561px меняем количество карточек с 2х до 1*/
+    .products-card {
+        width: 100% /* карточка занимает ширину 100% контейнера, тк у нас теперь отображаются одна карточка*/ 
     }
 }
