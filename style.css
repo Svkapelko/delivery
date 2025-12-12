@@ -1,5 +1,8 @@
 * {
     box-sizing: border-box; /* четкие размеры*/
+    font-family: Roboto;
+    font-style: normal;
+    line-height: normal;
 }
 
 body {
@@ -7,12 +10,19 @@ body {
     padding: 0;
 }
 
-.header {
-    height: 124px;
-    border: 1px solid red;
+.main {
+    flex-grow: 1;
+    background: linear-gradient(180.00deg, rgba(245, 245, 245, 0) 1%,rgba(245, 245, 245, 1) 100%);
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* единицы вью-порта, экрана пользователя, таким образом футер закрпелен вниз*/
 }
 
 .container {
+    width: 100%;
     height: 100%;
     max-width: 1230px; /* добавили 30px за счет padding,тогда будет ровно 1200px*/
     margin: 0px auto; /* выравниваем контейнер по центру, при сжатии экрана контенейр сжимается тж - элементы не вылезут за границу*/
@@ -20,8 +30,13 @@ body {
     padding-right: 15px;   
 }
 
+.header {
+   min-height: 124px;
+   display: flex;
+   align-items: center;
+}
+
 .header-box {
-    border: 1px solid black;
     height: 100%;
     display: flex; /* делает блоки флексовыми*/
     justify-content: space-between;
@@ -36,19 +51,158 @@ body {
     width: 100%;
 }
 
+.header-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 16px 8px 16px;
+    outline: none;
+}
+
+.btn-primary {
+    border-radius: 2px;
+    background: rgba(24, 144, 255, 1);
+    border: 1px solid rgba(24, 144, 255, 1);
+    color: rgba(255, 255, 255, 1);
+}   
+
+.btn-outline {
+    box-sizing: border-box;
+    border: 1px solid rgba(217, 217, 217, 1);
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 1);
+    color: rgba(89, 89, 89, 1);
+}
+
+.banner {
+    margin-bottom: 56px;
+
+}
+
+.banner-item {
+    background-image: url(./images/banners/banner.png);
+    background-repeat: no-repeat;
+    background-size: cover; /* картинка будет растягиваться  при увеличении количества текста*/
+    background-position: center right;
+    padding: 68px;
+    border-radius: 10px;
+}
+
+.banner-item--title {
+    color: rgba(48, 44, 52, 1);   
+    font-size: 39px;
+    font-weight: 700;
+    max-width: 50%;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.banner-item--subtitle {
+    color: rgba(48, 44, 52, 1);
+    font-size: 24px;
+    font-weight: 400;
+    max-width: 50%;
+    margin: 0;
+}
+
+.products {
+
+}
+
+.products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.products-header--title {
+    color: rgba(0, 0, 0, 1);
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.products-header--search {
+    box-sizing: border-box;
+    border: 1px solid rgba(217, 217, 217, 1);
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 1);
+    min-width: 306px;
+    height: 34px;
+    flex-shrink: 0;
+    padding: 5px 12px;
+}
+
+.products-header--search:focus {
+    outline: none;
+    border: 1px solid rgba(217, 217, 217, 1);
+}
+
+.products-header--search::placeholder {
+    color: rgba(191, 191, 191, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
 .footer{
-    height: 156px;
-    color: red;
+    min-height: 156px;
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
 }
 
 .footer-box {
-    border: 1px solid black;
     height: 100%;
-    display: flex; /* делает блоки флексовыми*/
+    display: flex; 
     justify-content: space-between;
     align-items: center;
+    gap: 36px;
+    flex-wrap: wrap; /* при уменьшении экрана строки будут переноситься в футере */
 }
 
 .footer-nav {
     flex-grow: 1; /* увеличивает ширину флекса - растягивает блок*/
+}
+
+.footer-nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0; 
+    padding: 0;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-nav ul li {
+    color:rgba(89, 89, 89, 1);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.footer-social {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+
+/* медиа-запросы внизу */
+@media (max-width: 991px){ /* при изменении ширины экрана до 991px меняем ширину текста - растягиваем по всему баннеру*/
+    .banner-item--title {
+         max-width: 100%;
+    }
+    .banner-item--subtitle {
+         max-width: 100%;
+    }
 }
