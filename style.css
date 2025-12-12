@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box; /* четкие размеры*/
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    height: 124px;
+    border: 1px solid red;
+}
+
+.container {
+    height: 100%;
+    max-width: 1230px; /* добавили 30px за счет padding,тогда будет ровно 1200px*/
+    margin: 0px auto; /* выравниваем контейнер по центру, при сжатии экрана контенейр сжимается тж - элементы не вылезут за границу*/
+    padding-left: 15px;
+    padding-right: 15px;   
+}
+
+.header-box {
+    border: 1px solid black;
+    height: 100%;
+    display: flex; /* делает блоки флексовыми*/
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    max-width: 100px;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.footer{
+    height: 156px;
+    color: red;
+}
+
+.footer-box {
+    border: 1px solid black;
+    height: 100%;
+    display: flex; /* делает блоки флексовыми*/
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-nav {
+    flex-grow: 1; /* увеличивает ширину флекса - растягивает блок*/
+}
