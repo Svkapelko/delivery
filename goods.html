@@ -6,7 +6,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./script/index.js" defer></script>
     <title>Delivery Food</title>
    
 </head>
@@ -24,7 +25,7 @@
                             <img src="./images/icons/user.png" alt="user">
                         Войти
                         </button>
-                        <button class="btn btn-outline">
+                        <button class="btn btn-outline" id="cart-button">
                             <img src="./images/icons/shopping-cart.png" alt="cart">
                         Корзина
                         </button>
@@ -36,7 +37,7 @@
         <main class="main">
             <section class="products">
                 <div class="container">
-                    <div class="products-wrapper">
+                    <div class="products-wrapper" id="goods-container">
                         <div class="products-card">
                             <div class="products-card_image">
                                 <img src="./images/goods/prd1.jpg" alt="product1">
@@ -113,7 +114,7 @@
                             </div>
                           <div class="products-card_description">
                                 <div class="products-card_description--row">
-                                    <h5 class="products-card_description--name">Цезарь маки хl </h5>
+                                    <h5 class="products-card_description--name">Цезарь маки хl</h5>
                                 </div>
                                 <div class="products-card_description--row">
                                     <p class="products-card_description--text">Рис, куриная грудка копченая, икра масаго, томат, айсберг, соус цезарь...</p>

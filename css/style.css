@@ -89,7 +89,7 @@ body {
 }
 
 .banner-item {
-    background-image: url(./images/banners/banner-img.png);
+    background-image: url(../images/banners/banner-img.png);
     background-repeat: no-repeat;
     background-size: contain; /* cover- картинка будет растягиваться  при увеличении количества текста*/
     background-position: center right;
